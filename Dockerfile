@@ -2,11 +2,11 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY . /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN python -m venv venv
-RUN ./venv/bin/pip install --upgrade pip
-RUN ./venv/bin/pip install -r Installer
+COPY . .
 
-CMD ["./venv/bin/python", "modules/main.py"]
+CMD ["python", "main.py"]
+
 
